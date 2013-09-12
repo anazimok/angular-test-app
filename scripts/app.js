@@ -15,4 +15,17 @@ angular.module('devApp', [])
       .otherwise({
         redirectTo: '/'
       });
-  });
+  })
+  .directive('changeSelection', function ($location) {
+        return {
+            restrict: 'A',
+            link: function (scope, element, attr) {
+                element.bind('click', function (e) {
+                    e.preventDefault();
+                    $location.path(attr.changeSelection);
+                    scope.$apply();
+                });
+            }
+        }
+    }
+)
